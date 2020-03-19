@@ -12,6 +12,7 @@ RUN apt-get clean && \
 		autotools-dev \
 		build-essential \
 		ca-certificates \
+		curl \
 		git \
 		git-core \
 		libasound2-dev \
