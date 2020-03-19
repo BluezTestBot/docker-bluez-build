@@ -48,6 +48,8 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux
 RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
 	touch /usr/bin/const_structs.checkpatch
 
+RUN pip3 install --no-cache-dir setuptools
+
 # Install ell
 RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	cd /ell && \
