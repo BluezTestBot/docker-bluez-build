@@ -51,6 +51,10 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux
 
 RUN pip3 install --no-cache-dir setuptools
 
+COPY requirements.txt /
+
+RUN pip3 install --no-cache-dir -r /requirements.txt
+
 # Install ell
 RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	cd /ell && \
