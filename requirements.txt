@@ -1,4 +1,6 @@
-pygithub==1.47
-gitpython==3.1.0
-requests==2.23.0
 gitlint==0.13.1
+gitpython==3.1.0
+junitparser==1.4.1
+pygithub==1.47
+requests==2.23.0
+
