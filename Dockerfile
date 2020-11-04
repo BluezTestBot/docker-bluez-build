@@ -10,24 +10,33 @@ RUN apt-get clean && \
 		autoconf \
 		automake \
 		autotools-dev \
+		bison \
 		build-essential \
 		ca-certificates \
 		curl \
+		dkms \
+		flex \
 		git \
 		git-core \
 		libasound2-dev \
 		libdbus-1-dev \
 		libdw-dev \
+		libelf-dev \
 		libglib2.0-dev \
+		libiberty-dev \
 		libical-dev \
 		libjson-c-dev \
+		libncurses-dev \
+		libpci-dev \
 		libreadline-dev \
 		libsbc-dev \
 		libspeexdsp-dev \
+		libssl-dev \
 		libsystemd-dev \
 		libtool \
 		libudev-dev \
 		locales \
+		openssl \
 		patch \
 		pkg-config \
 		python3 \
