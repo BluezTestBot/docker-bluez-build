@@ -10,6 +10,7 @@ RUN apt-get clean && \
 		autoconf \
 		automake \
 		autotools-dev \
+		bc \
 		bison \
 		build-essential \
 		ca-certificates \
