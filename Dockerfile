@@ -1,6 +1,6 @@
 FROM ubuntu:19.10
 
-ARG ELL_VER=0.28
+ARG ELL_VER=0.33
 
 ENV DEBIAN_FRONTEND noninteractive
 
