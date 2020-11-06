@@ -14,6 +14,7 @@ RUN apt-get clean && \
 		bison \
 		build-essential \
 		ca-certificates \
+		clang-tools \
 		curl \
 		dkms \
 		flex \
