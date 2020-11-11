@@ -73,3 +73,9 @@ RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	./bootstrap-configure && \
 	make && \
 	make install
+
+# Install Coverity Tools
+RUN wget https://scan.coverity.com/download/linux64 --post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz
+RUN mkdir /opt/cov-tools
+RUN	tar -xvzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1
+ENV PATH="/opt/cov-tools/bin:${PATH}"
