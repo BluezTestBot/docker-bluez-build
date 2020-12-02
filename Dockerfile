@@ -1,6 +1,6 @@
-FROM ubuntu:19.10
+FROM ubuntu:20.04
 
-ARG ELL_VER=0.33
+ARG ELL_VER=0.35
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -43,6 +43,7 @@ RUN apt-get clean && \
 		pkg-config \
 		python3 \
 		python3-pip \
+		qemu-system-x86 \
 		systemd \
 		udev \
 		wget \
