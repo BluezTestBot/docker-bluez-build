@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-ARG ELL_VER=0.35
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get clean && \
@@ -70,7 +68,6 @@ RUN pip3 install --no-cache-dir -r /requirements.txt
 # Install ell
 RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	cd /ell && \
-	git checkout -b ${ELL_VER} tags/${ELL_VER} && \
 	./bootstrap-configure && \
 	make && \
 	make install
