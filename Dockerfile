@@ -53,6 +53,13 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+# Install ell
+RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
+	cd /ell && \
+	./bootstrap-configure && \
+	make && \
+	make install
+
 RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
 	chmod +x /usr/bin/checkpatch.pl
 
@@ -64,13 +71,6 @@ RUN pip3 install --no-cache-dir setuptools
 COPY requirements.txt /
 
 RUN pip3 install --no-cache-dir -r /requirements.txt
-
-# Install ell
-RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
-	cd /ell && \
-	./bootstrap-configure && \
-	make && \
-	make install
 
 # Install Coverity Tools
 RUN wget https://scan.coverity.com/download/linux64 --post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz
