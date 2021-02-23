@@ -35,3 +35,17 @@ Use the following command to push the image to Docker.io for publishing.
 docker loging -u "<username>" -p "<passowrd>" docker.io
 docker push blueztestbot/bluez-build:latest blueztestbot/bluez-build:<tag>
 ```
+
+### Useful commands
+
+#### Pull the image from Docker.io
+
+```bash
+docker pull blueztestbot/bluez-build:latest
+```
+
+#### Show list of images
+
+```bash
+docker images
+```
