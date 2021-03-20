@@ -74,4 +74,5 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux
 RUN wget https://scan.coverity.com/download/linux64 --post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz
 RUN mkdir /opt/cov-tools
 RUN tar -xvzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1
+RUN rm /coverity_tool.tgz
 ENV PATH="/opt/cov-tools/bin:${PATH}"
