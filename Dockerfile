@@ -2,11 +2,6 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
 RUN apt-get clean && \
 	apt-get -y update && \
 	apt-get install --no-install-recommends -y \
@@ -53,6 +48,11 @@ RUN apt-get clean && \
 		xxd && \
 	rm -rf /var/lib/apt/lists/*
 
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 # Install ell
 RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	cd /ell && \
@@ -60,8 +60,8 @@ RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	make && \
 	make install
 
-RUN pip3 install --no-cache-dir setuptools
 COPY requirements.txt /
+RUN pip3 install --no-cache-dir setuptools
 RUN pip3 install --no-cache-dir -r /requirements.txt
 
 RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
