@@ -76,3 +76,12 @@ RUN mkdir /opt/cov-tools
 RUN tar -xvzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1
 RUN rm /coverity_tool.tgz
 ENV PATH="/opt/cov-tools/bin:${PATH}"
+
+# Install Cppcheck
+ENV CPPCHECK_VER=2.4
+RUN git clone https://github.com/danmar/cppcheck /opt/cppcheck && \
+	cd /opt/cppcheck && git checkout $CPPCHECK_VER && \
+	mkdir build && cd build && \
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_MATCHCOMPILER=yes && \
+	cmake --build .
+ENV PATH="/opt/cppcheck/build/bin:${PATH}"
