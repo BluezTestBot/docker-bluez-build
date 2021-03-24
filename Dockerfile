@@ -65,10 +65,12 @@ COPY requirements.txt /
 RUN pip3 install --no-cache-dir setuptools
 RUN pip3 install --no-cache-dir -r /requirements.txt
 
-RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
+RUN wget --no-verbose --no-check-certificate \
+	https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
 	chmod +x /usr/bin/checkpatch.pl
 
-RUN wget --no-check-certificate https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
+RUN wget --no-verbose --no-check-certificate \
+	https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
 	touch /usr/bin/const_structs.checkpatch
 
 # Install Coverity Tools
