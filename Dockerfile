@@ -7,9 +7,13 @@ RUN apt-get update && \
 		automake \
 		autotools-dev \
 		bc \
+		bear \
 		bison \
 		build-essential \
 		ca-certificates \
+		clang-tools \
+		cmake \
+		cppcheck \
 		curl \
 		dkms \
 		fakeroot \
@@ -63,3 +67,12 @@ RUN wget --no-verbose --no-check-certificate \
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
 	touch /usr/bin/const_structs.checkpatch
+
+# Install Coverity Tools
+RUN wget --no-verbose https://scan.coverity.com/download/linux64 \
+	--post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz && \
+	mkdir /opt/cov-tools && \
+	tar -xzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1 && \
+	rm /coverity_tool.tgz
+ENV PATH="/opt/cov-tools/bin:${PATH}"
+
