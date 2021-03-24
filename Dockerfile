@@ -80,3 +80,10 @@ RUN git clone https://git.kernel.org/pub/scm/devel/sparse/sparse.git /sparse && 
 RUN git clone https://repo.or.cz/smatch.git /smatch && \
 	cd /smatch && make
 
+# Install Coverity Tools
+RUN wget --no-verbose https://scan.coverity.com/download/linux64 \
+	--post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz && \
+	mkdir /opt/cov-tools && \
+	tar -xzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1 && \
+	rm /coverity_tool.tgz
+ENV PATH="/opt/cov-tools/bin:${PATH}"
