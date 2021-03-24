@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
 	apt-get install --no-install-recommends -y \
 		autoconf \
 		automake \
