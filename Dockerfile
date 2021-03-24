@@ -48,13 +48,6 @@ RUN apt-get update && \
 RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
-# Install ell
-RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
-	cd /ell && \
-	./bootstrap-configure && \
-	make && \
-	make install
-
 # Install Python3 Library
 RUN pip3 install --no-cache-dir setuptools && \
 	pip3 install --no-cache-dir gitlint gitpython junitparser pygithub requests
