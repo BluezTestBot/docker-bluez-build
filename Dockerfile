@@ -72,19 +72,3 @@ RUN wget --no-verbose --no-check-certificate \
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
 	touch /usr/bin/const_structs.checkpatch
-
-# Install Coverity Tools
-RUN wget https://scan.coverity.com/download/linux64 --post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz
-RUN mkdir /opt/cov-tools
-RUN tar -xzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1
-RUN rm /coverity_tool.tgz
-ENV PATH="/opt/cov-tools/bin:${PATH}"
-
-# Install Cppcheck
-ENV CPPCHECK_VER=2.4
-RUN git clone https://github.com/danmar/cppcheck /opt/cppcheck && \
-	cd /opt/cppcheck && git checkout $CPPCHECK_VER && \
-	mkdir build && cd build && \
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_MATCHCOMPILER=yes && \
-	cmake --build .
-ENV PATH="/opt/cppcheck/build/bin:${PATH}"
