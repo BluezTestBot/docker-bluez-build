@@ -1,9 +1,6 @@
 FROM ubuntu:20.04
 
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt-get clean && \
-	apt-get -y update && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 	apt-get install --no-install-recommends -y \
 		autoconf \
 		automake \
@@ -12,9 +9,6 @@ RUN apt-get clean && \
 		bison \
 		build-essential \
 		ca-certificates \
-		clang-tools \
-		cmake \
-		cppcheck \
 		curl \
 		dkms \
 		flex \
@@ -51,9 +45,7 @@ RUN apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
 # Install ell
 RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
@@ -62,9 +54,9 @@ RUN git clone https://git.kernel.org/pub/scm/libs/ell/ell.git /ell && \
 	make && \
 	make install
 
-COPY requirements.txt /
-RUN pip3 install --no-cache-dir setuptools
-RUN pip3 install --no-cache-dir -r /requirements.txt
+# Install Python3 Library
+RUN pip3 install --no-cache-dir setuptools && \
+	pip3 install --no-cache-dir gitlint gitpython junitparser pygithub requests
 
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
@@ -73,10 +65,3 @@ RUN wget --no-verbose --no-check-certificate \
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
 	touch /usr/bin/const_structs.checkpatch
-
-# Install Coverity Tools
-RUN wget https://scan.coverity.com/download/linux64 --post-data "token=OEYFXTX4NE6EvfqnBPAf_w&project=BluezTestBot%2Fbluez" -O /coverity_tool.tgz
-RUN mkdir /opt/cov-tools
-RUN tar -xzf /coverity_tool.tgz -C /opt/cov-tools/ --strip-components=1
-RUN rm /coverity_tool.tgz
-ENV PATH="/opt/cov-tools/bin:${PATH}"
