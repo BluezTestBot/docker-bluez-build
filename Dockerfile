@@ -13,6 +13,7 @@ RUN apt-get clean && \
 		build-essential \
 		ca-certificates \
 		clang-tools \
+		cmake \
 		curl \
 		dkms \
 		flex \
