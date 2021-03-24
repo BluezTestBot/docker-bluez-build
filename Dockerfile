@@ -7,10 +7,13 @@ RUN apt-get update && \
 		automake \
 		autotools-dev \
 		bc \
+		bear \
 		bison \
 		build-essential \
 		ca-certificates \
 		clang-tools \
+		cmake \
+		cppcheck \
 		curl \
 		dkms \
 		fakeroot \
@@ -65,3 +68,4 @@ RUN wget --no-verbose --no-check-certificate \
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -P /usr/bin/ && \
 	touch /usr/bin/const_structs.checkpatch
+
