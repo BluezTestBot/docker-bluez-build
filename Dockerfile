@@ -36,6 +36,7 @@ RUN apt-get update && \
 		openssl \
 		patch \
 		pkg-config \
+		python-docutils \
 		python3 \
 		python3-pip \
 		qemu-system-x86 \
