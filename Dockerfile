@@ -37,6 +37,7 @@ RUN apt-get update && \
 		patch \
 		pkg-config \
 		python-docutils \
+		python-pygments \
 		python3 \
 		python3-pip \
 		python3-pygments \
