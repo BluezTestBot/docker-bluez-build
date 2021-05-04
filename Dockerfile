@@ -39,6 +39,7 @@ RUN apt-get update && \
 		python-docutils \
 		python3 \
 		python3-pip \
+		python3-pygments \
 		qemu-system-x86 \
 		systemd \
 		udev \
