@@ -12,6 +12,7 @@ RUN apt-get update && \
 		ca-certificates \
 		curl \
 		dkms \
+		fakeroot \
 		flex \
 		git \
 		git-core \
