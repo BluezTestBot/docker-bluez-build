@@ -45,6 +45,7 @@ RUN apt-get update && \
 		qemu-system-x86 \
 		systemd \
 		udev \
+		valgrind \
 		wget \
 		xxd && \
 	rm -rf /var/lib/apt/lists/*
