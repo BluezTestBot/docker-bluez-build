@@ -23,8 +23,7 @@ Use the following command to build for publishing.
 
 ```bash
 docker build . --file Dockerfile \
-               --tag blueztestbot/bluez-build:latest \
-               --tag blueztestbot/bluez-build:<tag>
+               --tag blueztestbot/bluez-build:latest
 ```
 
 ### Publishing to Docker.io
@@ -32,8 +31,8 @@ docker build . --file Dockerfile \
 Use the following command to push the image to Docker.io for publishing.
 
 ```bash
-docker loging -u "<username>" -p "<passowrd>" docker.io
-docker push blueztestbot/bluez-build:latest blueztestbot/bluez-build:<tag>
+docker login -u "<username>" -p "<passowrd>" docker.io
+docker push blueztestbot/bluez-build:<tag>
 ```
 
 ### Useful commands
