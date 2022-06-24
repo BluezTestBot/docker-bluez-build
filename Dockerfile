@@ -10,6 +10,7 @@ RUN apt-get update && \
 		bison \
 		build-essential \
 		ca-certificates \
+		clang-tools \
 		curl \
 		dkms \
 		fakeroot \
