@@ -56,7 +56,7 @@ ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
 # Install Python3 Library
 RUN pip3 install --no-cache-dir setuptools && \
-	pip3 install --no-cache-dir gitlint gitpython junitparser pygithub requests
+	pip3 install --no-cache-dir gitlint gitpython junitparser pygithub requests ply
 
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
