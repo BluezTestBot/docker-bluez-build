@@ -57,6 +57,11 @@ RUN apt-get update && \
 RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
+# Install Sparse tool
+RUN git clone https://git.kernel.org/pub/scm/devel/sparse/sparse.git
+WORKDIR sparse
+RUN make && make PREFIX=/usr install
+
 # Install Python3 Library
 RUN pip3 install --no-cache-dir setuptools && \
 	pip3 install --no-cache-dir gitlint gitpython junitparser pygithub requests ply
