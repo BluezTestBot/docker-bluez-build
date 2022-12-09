@@ -44,7 +44,6 @@ RUN apt-get update && \
 		python3-pip \
 		python3-pygments \
 		qemu-system-x86 \
-		sparse \
 		systemd \
 		udev \
 		valgrind \
